@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MVVM</title>
+</head>
+<body>
+<script src="src/Observer.js"></script>
+<script src="src/Watcher.js"></script>
+<script src="src/Compiler.js"></script>
+<script src="src/MVVM.js"></script>
+<!--<script src="src/vue.js"></script>-->
+<div id="msg">
+    {{b.c+b.c}}这是普通文本{{b.c+1+message}}这是普通文本
+    <p>{{message}}</p>
+
+    <p><input type="text" v-model="message"/></p>
+    <p>{{message}}</p>
+    <p><button type="button" v-on:click="clickBtn(message)">click me</button></p>
+</div>
+<script>
+//    var vm = new Vue({
+//        el:"#msg",
+//        data:{
+//            b:{
+//                c:1
+//            },
+//            message:"hello world"
+//        },
+//        methods:{
+//            clickBtn:function(message){
+//                vm.message = "clicked";
+//            }
+//        }
+//    });
+
+        var mvvm = new MVVM({
+            el:"msg",
+            data:{
+                b:{
+                    c:1
+                },
+                message:"hello world!"
+            },
+            methods:{
+                clickBtn:function(message){
+                    this.message = "clicked";
+                }
+            }
+        });
+
+</script>
+</body>
+</html>
